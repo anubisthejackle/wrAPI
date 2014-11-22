@@ -1,13 +1,22 @@
 <?php
 require_once( dirname( __FILE__ ).'/apis/Api_Interface.php' );
 
+spl_autoload_register(function( $class ) {
+
+	if( strpos( $class, 'Exception' ) === false )
+		return false;
+
+	require_once( dirname( __FILE__ ).'/exceptions/'.$exception.'.php' );
+
+});
+
 class wrAPI {
 	
 	public function __construct( $api_name, $options = array() ){
 
-		if( file_exists( dirname( __FILE__ ) . '/apis/' . $this->_filterFile( $api_name ) ) ){
+		if( !file_exists( dirname( __FILE__ ) . '/apis/' . $this->_filterFile( $api_name ) ) ){
 
-			
+				
 
 		}
 
