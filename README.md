@@ -1,6 +1,6 @@
 # wrAPI
 
-A framework for wrapping all APIs.
+A framework for wrapping all REST APIs.
 
 ## Where do we stand?
 
