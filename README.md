@@ -2,6 +2,10 @@
 
 A framework for wrapping all REST APIs.
 
+## Pre-requisites
+
+``curl``
+
 ## Where do we stand?
 
 As you can see, there's not much here. wrAPI is an idea, a concept, which could become amazing. The idea is simple, but powerful. As the internet gets larger, the world relies on it more and more, and we rely on the ability to interact with the vast number of APIs that are out there. The thing is, each API has it's own idea of how it should be used, it has it's own way of working, and there is no standardized way of communicating with them.
