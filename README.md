@@ -25,3 +25,14 @@ $twitter->connect($api_key);
 ```
 
 Would work the same way. You'd be able to call them the same way. Standardize the API calls in-code, and the sites can change their calls, because your code will be future-proofed.
+
+## MOST WANTED
+
+Below is a list of the Most Wanted APIs, in no particular order. If you want to contribute to wrAPI, submit a pull request with a working version of one of these APIs:
+
+* Facebook
+* Twitter
+* LinkedIn
+* Github
+* Travis CI
+* Any Other REST API, or API that you can make work with the Interface provided
