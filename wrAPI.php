@@ -16,7 +16,7 @@ class wrAPI {
 
 		if( !file_exists( dirname( __FILE__ ) . '/apis/' . $this->_filterFile( $api_name ) ) ){
 
-				
+			throw new FileNotFoundException("Error: $api_name was not found.");				
 
 		}
 
@@ -29,4 +29,4 @@ class wrAPI {
 	}
 
 }
-
+$test = new wrAPI('Twitter');

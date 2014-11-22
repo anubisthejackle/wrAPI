@@ -1,19 +1,23 @@
 <?php
 
-interface Api_Interface { // Named with an Underscore to disallow it from being called by wrAPI's construct.
+abstract class Api_Interface { // Named with an Underscore to disallow it from being called by wrAPI's construct.
 
 	/*
 	 * Public Methods
 	 */
-	public function connect( $api_key );
-	public function get( $path, $options );
-	public function post( $path, $options );
-	public function delete( $path, $options );
-	public function put( $path, $options );	
+	abstract public function connect( $api_key );
+	abstract public function get( $path, $options );
+	abstract public function post( $path, $options );
+	abstract public function delete( $path, $options );
+	abstract public function put( $path, $options );	
 	
 	/*
 	 * Private Methods
 	 */
-	private function _processRequest( $path, $method, $options );
+	protected function _processRequest( $path, $method, $options ){
+
+		// Do stuff
+	
+	}
 
 }
