@@ -6,7 +6,7 @@ spl_autoload_register(function( $class ) {
 	if( strpos( $class, 'Exception' ) === false )
 		return false;
 
-	require_once( dirname( __FILE__ ).'/exceptions/'.$exception.'.php' );
+	require_once( dirname( __FILE__ ).'/exceptions/'.$class.'.php' );
 
 });
 
@@ -29,4 +29,4 @@ class wrAPI {
 	}
 
 }
-$test = new wrAPI('Twitter');
+
