@@ -1,4 +1,4 @@
 <?php
-class Facebook extends Api_Interface {
+class Facebook implements Api_Interface {
 
 }
