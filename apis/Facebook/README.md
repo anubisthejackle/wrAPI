@@ -53,3 +53,29 @@ $result = $fb->get( '/{user-id}/accounts', array( 'access_token' => $user_access
 ```
 
 This will spit out a ton of information for all pages that you've granted permission to. It's in an array, so iterate over it, find the Page that you're looking for, and take the field `access_token` from it.
+
+## Generate a Long Lived Token
+
+Facebook Provides us the following API Call to convert a short-life token into a long-life token.
+
+```
+GET /oauth/access_token?  
+    grant_type=fb_exchange_token&           
+    client_id={app-id}&
+    client_secret={app-secret}&
+    fb_exchange_token={short-lived-token} 
+```
+
+Now, that same call in wrAPI would be:
+
+```
+$result = $fb->get( '/oauth/access_token', array(
+							'grant_type' => 'fb_exchange_token',
+							'client_id' => $app_id,
+							'client_secret' => $app_secret,
+							'fb_exchange_token' => $access_token
+						)
+		);
+```
+
+This will return the result as an array with the token within it.
