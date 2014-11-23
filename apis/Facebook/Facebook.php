@@ -46,8 +46,11 @@ class Facebook extends Abstract_Api implements Api_Interface {
 				curl_setopt( $curl, CURLOPT_POSTFIELDS, $options );
 				break;
 			case 'delete':
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+				curl_setopt($ch, CURLOPT_POSTFIELDS, $options);
 				break;
 			default:
+				throw new MethodNotSupportedException( 'Sorry, '.$method.' is an unsupported method for Facebook.' );
 				break;
 		}		
 
