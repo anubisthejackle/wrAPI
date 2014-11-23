@@ -42,6 +42,8 @@ class Facebook extends Abstract_Api implements Api_Interface {
 				}
 				break;
 			case 'post':
+				curl_setopt( $curl, CURLOPT_POST, true );
+				curl_setopt( $curl, CURLOPT_POSTFIELDS, $options );
 				break;
 			case 'delete':
 				break;
