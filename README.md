@@ -17,18 +17,19 @@ wrAPI hopes to create a standardized API format. You will be able to connect to 
 So:
 
 ```
-$fb = new wrAPI('facebook');
-$fb->connect($api_key);
+$fb = wrAPI::create('Facebook');
+$fb->connect( 'TEST' );
 ```
 
 and
 
 ```
-$twitter = new wrAPI('twitter');
-$twitter->connect($api_key);
+$twitter = wrAPI::create('Twitter');
+$twitter->connect( 'TEST' );
 ```
 
 Would work the same way. You'd be able to call them the same way. Standardize the API calls in-code, and the sites can change their calls, because your code will be future-proofed.
+
 
 ## MOST WANTED
 
