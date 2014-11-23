@@ -1,4 +1,5 @@
 # wrAPI
+[![Build Status](https://travis-ci.org/anubisthejackle/wrAPI.svg)](https://travis-ci.org/anubisthejackle/wrAPI)
 
 A framework for wrapping all REST APIs.
 
