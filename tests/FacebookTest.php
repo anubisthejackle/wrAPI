@@ -51,4 +51,43 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
 
 	}
 
+	public function testMalformedJSON() {
+
+		$fb = wrAPI::create( 'Facebook' );
+		$fb->debug();
+
+		try {
+
+			$data = $fb->get( '/test', 'FAKE JSON' );
+			// SANITY CHECK: This should not run.
+			$this->assertTrue( false );
+
+		}catch( Exception $e ){
+
+			$this->assertInstanceOf( 'JsonException', $e );
+			$this->assertEquals( 'Syntax error, malformed JSON.', $e->getMessage() );
+		}
+
+	}
+
+	public function testJsonMaxDepth() {
+
+		$fb = wrAPI::create( 'Facebook' );
+		$fb->debug();
+		
+		$json = null;
+		for( $i = 0; $i < 600; $i++ ){
+		        $temp = '[' . $json . ']';
+		        $json = $temp;
+		}
+
+		try {
+			$data = $fb->get('/test', $json);
+		}catch( Exception $e ){
+			$this->assertInstanceOf( 'JsonException', $e );
+			$this->assertEquals( 'Maximum stack depth exceeded.', $e->getMessage() );
+		}
+
+	}
+
 }
