@@ -5,7 +5,7 @@ abstract class Abstract_Api {
 	/*
 	 * Method adapted from this answer: http://stackoverflow.com/a/15198925/833696
 	 */
-	private function _validate($json, $assoc_array = False) {
+	protected function _validate($json, $assoc_array = False) {
 		// decode the JSON data
 		$result = json_decode($json, $assoc_array);
 
