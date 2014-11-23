@@ -41,5 +41,3 @@ class wrAPI {
 
 }
 
-$fb = wrAPI::create('Facebook');
-$fb->connect( 'TEST' );
