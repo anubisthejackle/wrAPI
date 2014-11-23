@@ -32,3 +32,24 @@ $access_token = $fb->get( '/oauth/access_token', array(
 						)
 			);
 ```
+
+Alternatively, you could make your calls like this:
+
+```
+$result = $fb->get( '/me', array(
+				'access_token' => $app_id.'|'.$app_secret
+			)
+		);
+```
+
+Which doesn't require you to capture an access token.
+
+### Page Access Tokens
+
+Page tokens are a bit more work. First you need a User Access Token. Once you have that, do the following:
+
+```
+$result = $fb->get( '/{user-id}/accounts', array( 'access_token' => $user_access_token ) );
+```
+
+This will spit out a ton of information for all pages that you've granted permission to. It's in an array, so iterate over it, find the Page that you're looking for, and take the field `access_token` from it.
