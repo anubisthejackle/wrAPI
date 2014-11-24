@@ -50,6 +50,70 @@ class FacebookTest extends PHPUnit_Framework_TestCase {
 		$this->assertTrue( is_object( $result->object ) );
 
 	}
+	
+	public function testPostMethod() {
+
+		$fb = wrAPI::create( 'Facebook' );
+		$fb->debug();
+
+		$object = new stdClass();
+
+		$data = array(
+			'int' => 123,
+			'string' => 'test',
+			'boolTrue' => true,
+			'boolFalse' => false,
+			'null' => null,
+			'array' => array( 1,2,3 ),
+			'object' => $object
+		);
+
+		$result = $fb->post( '/testPath', $data );
+
+		$this->assertTrue( is_object( $result ) );
+
+		$this->assertEquals( 123, $result->int );
+		$this->assertEquals( 'test', $result->string );
+		$this->assertTrue( $result->boolTrue );
+		$this->assertFalse( $result->boolFalse );
+		$this->assertNull( $result->null );
+		$this->assertTrue( is_array( $result->array ) );
+		$this->assertNotEmpty( $result->array );
+		$this->assertTrue( is_object( $result->object ) );
+
+	}
+	
+	public function testDeleteMethod() {
+
+		$fb = wrAPI::create( 'Facebook' );
+		$fb->debug();
+
+		$object = new stdClass();
+
+		$data = array(
+			'int' => 123,
+			'string' => 'test',
+			'boolTrue' => true,
+			'boolFalse' => false,
+			'null' => null,
+			'array' => array( 1,2,3 ),
+			'object' => $object
+		);
+
+		$result = $fb->delete( '/testPath', $data );
+
+		$this->assertTrue( is_object( $result ) );
+
+		$this->assertEquals( 123, $result->int );
+		$this->assertEquals( 'test', $result->string );
+		$this->assertTrue( $result->boolTrue );
+		$this->assertFalse( $result->boolFalse );
+		$this->assertNull( $result->null );
+		$this->assertTrue( is_array( $result->array ) );
+		$this->assertNotEmpty( $result->array );
+		$this->assertTrue( is_object( $result->object ) );
+
+	}
 
 	public function testMalformedJSON() {
 
