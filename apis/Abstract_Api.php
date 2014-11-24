@@ -29,13 +29,13 @@ abstract class Abstract_Api {
 				$error = 'Unexpected control character found.';
 				break;
 
-			case JSON_ERROR_SYNTAX:
-				$error = 'Syntax error, malformed JSON.';
-				break;
-
 			// only PHP 5.3+
 			case JSON_ERROR_UTF8:
 				$error = 'Malformed UTF-8 characters, possibly incorrectly encoded.';
+				break;
+
+			case JSON_ERROR_SYNTAX:
+				$error = 'Syntax error, malformed JSON.';
 				break;
 
 			default:
