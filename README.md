@@ -12,7 +12,7 @@ A framework for wrapping all REST APIs.
 Below is a list of the Most Wanted APIs, in no particular order. If you want to contribute to wrAPI, submit a pull request with a working version of one of these APIs:
 
 * ~~Facebook~~
-* Twitter
+* ~~Twitter~~
 * LinkedIn
 * Github
 * Travis CI
