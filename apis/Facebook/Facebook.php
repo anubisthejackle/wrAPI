@@ -5,7 +5,7 @@ class Facebook extends Abstract_Api implements Api_Interface {
 
 		return $this->_curl( 
 					strtolower( $name ), 
-					$arguments[ 0 ], 
+					'https://graph.facebook.com' . $arguments[ 0 ], 
 					$arguments[ 1 ] 
 				);
 
