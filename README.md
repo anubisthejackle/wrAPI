@@ -13,7 +13,7 @@ Below is a list of the Most Wanted APIs, in no particular order. If you want to 
 
 * ~~Facebook~~
 * ~~Twitter~~
-* LinkedIn
+* ~~LinkedIn~~
 * Github
 * Travis CI
 * Any Other REST API, or API that you can make work with the Interface provided
