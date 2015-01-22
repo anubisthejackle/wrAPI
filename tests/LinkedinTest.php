@@ -1,6 +1,6 @@
 <?php
 
-require_once( dirname( __FILE__ ) . '/../wrAPI.php' );
+require_once( dirname( __FILE__ ) . '/../src/wrAPI.php' );
 
 class LinkedinTest extends PHPUnit_Framework_TestCase {
 
