@@ -77,8 +77,9 @@ abstract class Abstract_Api {
                                 curl_setopt( $curl, CURLOPT_POSTFIELDS, $options );
                                 break;
 
+			case 'put':
                         case 'delete':
-                                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper( $method ) );
                                 curl_setopt($ch, CURLOPT_POSTFIELDS, $options);
                                 break;
 
