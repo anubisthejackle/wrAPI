@@ -25,15 +25,25 @@ class wrAPI {
 
 	public static function create( $api_name ){
 
-		$api_name = preg_replace( '/[^a-zA-Z0-9]/', null, $api_name );
+		$name = explode( '_', $api_name );
 
-		if( !file_exists( dirname( __FILE__ ) . '/apis/' . $api_name . '/' . $api_name . '.php' ) ){
+		$name = array_map( function($a) {
+			return preg_replace( '/[^a-zA-Z0-9]/', null, $a );
+		}, $name);
+
+		if( count( $name ) > 1 ){
+			$filename = implode('/', $name);
+		}else{
+			$filename = $name[ 0 ] . '/' . $name[ 0 ];
+		}
+
+		if( !file_exists( dirname( __FILE__ ) . '/apis/' . $filename . '.php' ) ){
 
 			throw new FileNotFoundException("Error: $api_name was not found.");
 
 		}
 
-		require_once( dirname( __FILE__ ) . '/apis/' . $api_name . '/' .$api_name . '.php' );
+		require_once( dirname( __FILE__ ) . '/apis/' . $filename . '.php' );
 
 		return new $api_name();
 
