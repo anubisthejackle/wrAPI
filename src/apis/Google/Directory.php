@@ -5,6 +5,8 @@ class Google_Directory extends Abstract_Api implements Api_Interface {
 
 		if( !is_string( $arguments[ 1 ] ) )
 			$data = json_encode( $arguments[ 1 ] );
+		else
+			$data = $arguments[ 1 ];
 
 		$this->_addCustomHeader( 'Content-Length: ' . strlen( $data ) );
 
