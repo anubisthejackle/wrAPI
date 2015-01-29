@@ -3,7 +3,9 @@ class Google_Directory extends Abstract_Api implements Api_Interface {
 	
 	public function __call( $name, $arguments ) {
 
-		$data = json_encode( $arguments[ 1 ] );
+		if( !is_string( $arguments[ 1 ] ) )
+			$data = json_encode( $arguments[ 1 ] );
+
 		$this->_addCustomHeader( 'Content-Length: ' . strlen( $data ) );
 
 		return $this->_curl( 
