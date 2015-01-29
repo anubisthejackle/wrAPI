@@ -3,7 +3,7 @@
 abstract class Abstract_Api {
 
 	protected $debugging = false;
-
+	protected $_customHeaders = array();
 	/*
 	 * Method adapted from this answer: http://stackoverflow.com/a/15198925/833696
 	 */
@@ -54,6 +54,10 @@ abstract class Abstract_Api {
 
 	}
 
+	protected function _addCustomHeader( $header ){
+		$this->_customHeaders[] = $header;
+	}
+
         protected function _curl( $method, $path, $options ) {
                 if( $this->debugging === true )
                         return $this->_curlTest( $method, $path, $options );
@@ -91,7 +95,10 @@ abstract class Abstract_Api {
 
                 curl_setopt( $curl, CURLOPT_URL, $path );
                 curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
-                
+                if(count( $this->_customHeaders ) > 0){
+			curl_setopt( $curl, CURLOPT_HTTPHEADER, $this->_customHeaders );
+		}
+
                 return $this->_validate( curl_exec( $curl ) );
 
         }
