@@ -18,9 +18,9 @@ class Google_Directory extends Abstract_Api implements Api_Interface {
 
 	}
 	
-	public function connect( $key, $holder ){
+	public function connect( $params ){
 
-		$this->_addCustomHeader( 'Authorization: '.$holder.' '.$key );
+		$this->_addCustomHeader( 'Authorization: '.$params['holder'].' '.$params['key'] );
 		$this->_addCustomHeader( 'Content-Type: application/json' );
 
 	}

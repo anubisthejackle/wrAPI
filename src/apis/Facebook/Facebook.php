@@ -11,7 +11,6 @@ class Facebook extends Abstract_Api implements Api_Interface {
 
 	}
 	
-	public function connect( $api_key ){}
-	public function put( $path, $options ){}
+	public function connect( $arguments ){}
 
 }
