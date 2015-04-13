@@ -1,5 +1,5 @@
 <?php
-class Google_Directory extends Abstract_Api implements Api_Interface {
+class Google_Drive extends Abstract_Api implements Api_Interface {
 	
 	public function __call( $name, $arguments ) {
 
