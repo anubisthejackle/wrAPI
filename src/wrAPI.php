@@ -10,7 +10,8 @@ spl_autoload_register(function( $class ) {
 
 	if( !file_exists( dirname( __FILE__ ).'/exceptions/'.$class.'.php' ) ){
 
-		throw new Exception( 'Error: Custom exception with name '.$class.' not found.' );
+		// Not a wrAPI Exception, so fail. But fail nicely.
+		return false;
 
 	}
 
