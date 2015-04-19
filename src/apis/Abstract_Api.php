@@ -58,7 +58,7 @@ abstract class Abstract_Api {
 		$this->_customHeaders[] = $header;
 	}
 
-        protected function _curl( $method, $path, $options ) {
+        protected function _curl( $method, $path, $options, $json = true ) {
                 if( $this->debugging === true )
                         return $this->_curlTest( $method, $path, $options );
 
@@ -67,24 +67,29 @@ abstract class Abstract_Api {
 
                         case 'get':
                                 $params = '?';
-                                foreach( $options as $key => $value ){
-                                        $params .= urlencode( $key ) . '=' . urlencode( $value );
-                                }
+				if( !is_array( $options ) || count( $options ) <= 0 )
+					break;
+
+	                        foreach( $options as $key => $value ){
+        	                	$params .= urlencode( $key ) . '=' . urlencode( $value );
+                	        }
                                 
-                                if( $params != '?' ){
+                        	if( $params != '?' ){
                                         $path .= $params;
                                 }
                                 break;
 
                         case 'post':
                                 curl_setopt( $curl, CURLOPT_POST, true );
-                                curl_setopt( $curl, CURLOPT_POSTFIELDS, $options );
+				if( !empty( $options ) )
+                                	curl_setopt( $curl, CURLOPT_POSTFIELDS, $options );
                                 break;
 
 			case 'put':
                         case 'delete':
-                                curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper( $method ) );
-                                curl_setopt($ch, CURLOPT_POSTFIELDS, $options);
+                                curl_setopt( $curl, CURLOPT_CUSTOMREQUEST, strtoupper( $method ) );
+				if( !empty( $options ) )
+                                	curl_setopt( $curl, CURLOPT_POSTFIELDS, $options);
                                 break;
 
                         default:
@@ -92,14 +97,21 @@ abstract class Abstract_Api {
                                 break;
 
                 }
-
-                curl_setopt( $curl, CURLOPT_URL, $path );
+                
+		curl_setopt( $curl, CURLOPT_URL, $path );
                 curl_setopt( $curl, CURLOPT_RETURNTRANSFER, true );
+
                 if(count( $this->_customHeaders ) > 0){
 			curl_setopt( $curl, CURLOPT_HTTPHEADER, $this->_customHeaders );
 		}
+		
+		$exec_result = curl_exec( $curl );
 
-                return $this->_validate( curl_exec( $curl ) );
+		$this->_customHeaders = array();
+		if( $json === true )
+	                return $this->_validate( $exec_result );
+		else
+			return $exec_result;
 
         }
 

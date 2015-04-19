@@ -17,4 +17,17 @@ class Google_Auth extends Abstract_Api implements Api_Interface {
 
 	}
 
+	/* Only useful for Offline access */
+	public function refresh( $token, $client_id, $client_secret ){
+		$data = array(
+				'refresh_token' => $token,
+				'client_id' => $client_id,
+				'client_secret' => $client_secret,
+				'grant_type' => 'refresh_token'
+			);
+
+		return $this->_curl( 'post', 'https://www.googleapis.com/oauth2/v3/token', http_build_query( $data ) );
+
+	}
+
 }

@@ -9,8 +9,8 @@ spl_autoload_register(function( $class ) {
 		return false;
 
 	if( !file_exists( dirname( __FILE__ ).'/exceptions/'.$class.'.php' ) ){
-
-		// Not a wrAPI Exception, so fail. But fail nicely.
+	
+		// Not a wrAPI class.
 		return false;
 
 	}
