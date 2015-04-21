@@ -28,15 +28,7 @@ class Google_Drive extends Abstract_Api implements Api_Interface {
 
 	public function downloadFile( $url ){
 
-		error_log( $url );
-
 		return $this->_curl( 'get', $url, array(), false );
-
-	}
-
-	public function moveFile( $url ) {
-
-		
 
 	}
 
