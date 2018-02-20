@@ -70,8 +70,11 @@ abstract class Abstract_Api {
 				if( !is_array( $options ) || count( $options ) <= 0 )
 					break;
 
+				$counter = 0;
 	                        foreach( $options as $key => $value ){
+					if( $counter > 0 ) $params .= '&';
         	                	$params .= urlencode( $key ) . '=' . urlencode( $value );
+					$counter++;
                 	        }
                                 
                         	if( $params != '?' ){
