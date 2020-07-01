@@ -1,22 +1,26 @@
 <?php
-class Generic extends Abstract_Api implements Api_Interface {
-	
-	public function __call( $name, $arguments ) {
 
-		if( strpos( $arguments[ 0 ], '/' ) !== 0 ){
-			
-			$arguments[ 0 ] = '/'.$arguments[ 0 ];
-		
-		}
+class Generic extends Abstract_Api implements Api_Interface
+{
 
-		return $this->_curl( 
-					strtolower( $name ), 
-					$arguments[ 0 ], 
-					$arguments[ 1 ] 
+    public function __call( $name, $arguments ) {
+
+		$data = isset($arguments[1]) ? $arguments[1] : null;
+
+		return $this->_curl(
+					strtolower( $name ),
+					$arguments[ 0 ],
+					$data
 				);
 
 	}
 	
-	public function connect( $arguments ){}
+	public function connect($arguments) {}
 
+	public function addCustomHeader( $customHeader ){
+
+		$this->_addCustomHeader( $customHeader );
+
+    }
+    
 }
