@@ -15,6 +15,8 @@ class Generic extends Abstract_Api implements Api_Interface
 
 	}
 	
+	public function connect($arguments) {}
+
 	public function addCustomHeader( $customHeader ){
 
 		$this->_addCustomHeader( $customHeader );
